@@ -1,0 +1,44 @@
+/**Desserts store: 
+Muffins (5) 
+Apple Pie (7)
+Truffle (6) 
+Croissants (9)
+Carrot cake (10)
+Brownies (8)
+Ice Cream (3)
+Chocolate cake (6)
+Cheesecake (12)
+Cheese tart (8)
+Jell-O (5)
+Deep fried Oreos (8)
+Creme Brulee (9)
+Mochi (5)
+Cookies (3)
+**/
+
+CREATE TABLE dessert_store (id INTEGER PRIMARY KEY, items TEXT, price INTEGER, quantity INTEGER, rate INTEGER); 
+
+INSERT INTO dessert_store VALUES (1, "Muffins", 5, 20, 7.5);
+INSERT INTO dessert_store VALUES (2, "Apple pie", 7, 40, 6);
+INSERT INTO dessert_store VALUES (3, "Truffle", 6, 10, 5.5);
+INSERT INTO dessert_store VALUES (4, "Croissants", 9, 20, 8);
+INSERT INTO dessert_store VALUES (5, "Carrot cake", 10, 7, 10);
+INSERT INTO dessert_store VALUES (6, "Brownies", 8, 10, 7.5);
+INSERT INTO dessert_store VALUES (7, "Icecream",3, 5, 9.2);
+INSERT INTO dessert_store VALUES (8, "Chocolate cake", 6, 10, 9.5);
+INSERT INTO dessert_store VALUES (9, "Cheesecake", 12, 10, 10);
+INSERT INTO dessert_store VALUES (10, "Cheesetart", 12, 25, 8);
+INSERT INTO dessert_store VALUES (11, "Jell-O's", 5, 40, 7.5);
+INSERT INTO dessert_store VALUES (12, "Deep fried Oreos", 8, 10, 7);
+INSERT INTO dessert_store VALUES (13, "Creme Brulee", 9, 15, 9);
+INSERT INTO dessert_store VALUES (14, "Mochi", 5, 45, 8);
+INSERT INTO dessert_store VALUES (15, "Cookies", 3, 50, 9.3);
+SELECT * FROM dessert_store ORDER BY price;
+
+SELECT SUM(quantity) FROM dessert_store;
+
+--what is the avg price of items?
+SELECT AVG(price) FROM dessert_store; 
+
+--what is the least rating?
+SELECT MIN(rate) FROM dessert_store; 
