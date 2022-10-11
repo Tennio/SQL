@@ -1,0 +1,7 @@
+SELECT COUNT(orderID) from BIT_DB.JanSales;
+SELECT COUNT(orderID) from BIT_DB.JanSales WHERE product = 'iPhone';
+SELECT acctnum from BIT_DB.customers INNER JOIN BIT_DB.FebSales ON customers.order_id= FebSales.orderID;
+SELECT Product, MIN(price) as price from BIT_DB.JanSales Jan GROUP BY product, price ORDER BY price ASC LIMIT 1;
+SELECT Product, sum(price*Quantity) as total_revenue from BIT_DB.JanSales GROUP BY Product;
+SELECT Product, SUM(price) as price, sum(Quantity) as quantity from BIT_DB.FebSales WHERE location = '548 Lincoln St, Seattle, WA 98101' GROUP BY  Product;
+SELECT avg(Quantity*price), count(cust.acctnum) from BIT_DB.customers cust LEFT JOIN BIT_DB.FebSales Feb ON cust.order_id= Feb.orderID WHERE Feb.Quantity > 2;
