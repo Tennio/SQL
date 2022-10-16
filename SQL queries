@@ -31,3 +31,32 @@ LEFT JOIN BIT_DB.FebSales Feb ON cust.order_id= Feb.orderID WHERE Feb.Quantity >
 SELECT Product, sum(Quantity) as quantity from BIT_DB.FebSales
 WHERE location like '%Los Angeles%'
 GROUP BY Product;
+
+
+--Which locations in New York received at least 3 orders in January, and how many orders did they each receive?
+SELECT location, count(orderID) FROM BIT_DB.JanSales 
+WHERE location like '%NY%'
+HAVING COUNT(Quantity) > 2;
+
+--How many of each type of headphone were sold in February?
+SELECT Product, sum(Quantity) AS quantity FROM BIT_DB.FebSales 
+WHERE product like '%headphone%'
+GROUP BY product;
+
+--What was the average amount spent per account in February?
+SELECT AVG(quantity*price) AS avgamount
+FROM BIT_DB.FebSales Feb
+
+LEFT JOIN BIT_DB.customers cust
+ON Feb.orderID = cust.order_id;
+
+--What was the average quantity of products purchased per account in February?
+SELECT AVG(Quantity) FROM BIT_DB.FebSales Feb
+LEFT JOIN BIT_DB.customers cust
+ON Feb.orderID = cust.order_id;
+
+--Which product brought in the most revenue in January and how much revenue did it bring in total?
+SELECT product, sum(Quantity*price) as tolrevenue FROM BIT_DB.FebSales 
+GROUP BY product 
+ORDER BY tolrevenue desc 
+LIMIT 1;
