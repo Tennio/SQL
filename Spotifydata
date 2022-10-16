@@ -54,4 +54,12 @@ GROUP BY artist_name
 ORDER BY energy asc
 LIMIT 10;
 
+--for every artist with an average popularity of 90 or above, you need to show their name, their average popularity, and label them as a “Top Star”
+WITH CTE_avg AS (
+SELECT s.artist_name, AVG(s.popularity) as avg_pop
+FROM Spotifydata s
+GROUP BY s.artist_name
+)
+SELECT artist_name, avg_pop, 'TOP STAR' AS tag FROM CTE_avg
+WHERE avg_pop >=90;
 
