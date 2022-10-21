@@ -56,11 +56,11 @@ ON invt.TrackId = tracks.TrackId;
 SELECT tracks.Name, artists.Name as Artist, inv.InvoiceLineId 
 FROM chinook.invoice_items inv
 LEFT JOIN chinook.tracks tracks
-ON tracks.TrackId = inv.TrackId
+ON inv.TrackId = tracks.TrackId
 INNER JOIN chinook.albums alb
 ON alb.AlbumId = tracks.AlbumId
 LEFT JOIN chinook.artists art
-ON alb.ArtistId = art.ArtistId;
+ON art.ArtistId  = alb.ArtistId;
 
 --Provide a query that shows all the Tracks, and include the Album name, Media type, and Genre.
 SELECT tracks.Name, alb.Title, med.Name as 'Media types', gen.Name as 'Genre' FROM chinook.tracks
